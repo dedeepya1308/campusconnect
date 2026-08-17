@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { readData, writeData } from '../utils/fileHandler.js';
+import { generateId } from '../utils/generateId.js';
+import { authenticate } from '../middleware/authMiddleware.js';
+import { allowRoles } from '../middleware/roleMiddleware.js';
+const router = Router();
+router.get('/mine', authenticate, async (req,res) => { const regs = await readData('registrations.json'); const events = await readData('events.json'); res.json(regs.filter((r) => r.userId === req.user.id).map((r) => ({ ...r, event: events.find((e) => e.id === r.eventId) })).filter((r) => r.event)); });
+router.post('/:eventId', authenticate, allowRoles('student'), async (req,res) => { const events = await readData('events.json'); const event = events.find((e) => e.id === req.params.eventId); if (!event) return res.status(404).json({ message: 'Event not found.' }); const regs = await readData('registrations.json'); if (regs.some((r) => r.eventId === event.id && r.userId === req.user.id)) return res.status(409).json({ message: 'Already registered.' }); if (event.capacity && regs.filter((r) => r.eventId === event.id).length >= event.capacity) return res.status(400).json({ message: 'This event is full.' }); const registration = { id: generateId('reg'), eventId: event.id, userId: req.user.id, createdAt: new Date().toISOString() }; regs.push(registration); await writeData('registrations.json', regs); const notes = await readData('notifications.json'); notes.push({ id: generateId('note'), userId: event.organizerId, message: `${req.user.name} registered for ${event.title}.`, read: false, createdAt: new Date().toISOString() }); await writeData('notifications.json', notes); res.status(201).json(registration); });
+router.delete('/:eventId', authenticate, async (req,res) => { const regs = await readData('registrations.json'); const registration = regs.find((r) => r.eventId === req.params.eventId && r.userId === req.user.id); if (!registration) return res.status(404).json({ message: 'Registration not found.' }); await writeData('registrations.json', regs.filter((r) => r.id !== registration.id)); res.status(204).end(); });
+export default router;

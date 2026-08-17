@@ -1,0 +1,16 @@
+[
+  {
+    "id": "club_tech",
+    "name": "Tech Society",
+    "description": "Building the campus technology community.",
+    "ownerId": "usr_organizer",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "club_88260dba61a2",
+    "name": "Avarthan",
+    "description": "",
+    "ownerId": "",
+    "createdAt": "2026-08-16T10:27:49.127Z"
+  }
+]

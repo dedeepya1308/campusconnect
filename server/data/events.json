@@ -1,0 +1,34 @@
+[
+  {
+    "id": "evt_001",
+    "title": "Campus Hackathon",
+    "description": "A 24-hour build sprint for students of all experience levels.",
+    "date": "2026-09-15",
+    "time": "10:00",
+    "location": "Innovation Lab",
+    "category": "Technology",
+    "capacity": 100,
+    "clubId": "club_tech",
+    "organizerId": "usr_organizer",
+    "image": "",
+    "createdAt": "2026-08-01T00:00:00.000Z"
+  },
+  {
+    "id": "evt_fe37a5dabc31",
+    "title": "Independence Day",
+    "description": "Independece day cultural event",
+    "date": "2026-08-18",
+    "time": "17:00",
+    "location": "L-103",
+    "category": "General",
+    "capacity": 0,
+    "clubId": "",
+    "organizerId": "usr_organizer",
+    "image": "",
+    "status": "published",
+    "approvalStatus": "approved",
+    "createdAt": "2026-08-16T10:25:47.955Z",
+    "rejectionReason": "",
+    "reviewedAt": "2026-08-16T10:27:28.077Z"
+  }
+]

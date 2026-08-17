@@ -1,0 +1,23 @@
+[
+  {
+    "id": "note_1be81216039f",
+    "userId": "usr_organizer",
+    "message": "Vykuntapu Dedeepya registered for Campus Hackathon.",
+    "read": true,
+    "createdAt": "2026-08-16T09:59:37.180Z"
+  },
+  {
+    "id": "note_f817df8a2a4d",
+    "userId": "usr_admin",
+    "message": "Tech Society submitted “Independence Day” for approval.",
+    "read": true,
+    "createdAt": "2026-08-16T10:25:55.924Z"
+  },
+  {
+    "id": "note_c1d2fd8b5ef8",
+    "userId": "usr_organizer",
+    "message": "Your event “Independence Day” has been approved and published.",
+    "read": false,
+    "createdAt": "2026-08-16T10:27:28.082Z"
+  }
+]

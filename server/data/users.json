@@ -1,0 +1,34 @@
+[
+  {
+    "id": "usr_admin",
+    "name": "Campus Admin",
+    "email": "admin@campusconnect.local",
+    "password": "$2a$10$27RuXQkaHXdlX4k7RcupQut938zrnY6QVmY5B4AwWv9FQamesXbjS",
+    "role": "admin",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "usr_organizer",
+    "name": "Tech Society",
+    "email": "organizer@campusconnect.local",
+    "password": "$2a$10$27RuXQkaHXdlX4k7RcupQut938zrnY6QVmY5B4AwWv9FQamesXbjS",
+    "role": "organizer",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "usr_student",
+    "name": "Demo Student",
+    "email": "student@campusconnect.local",
+    "password": "$2a$10$27RuXQkaHXdlX4k7RcupQut938zrnY6QVmY5B4AwWv9FQamesXbjS",
+    "role": "student",
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "usr_4081bd5a7cd5",
+    "name": "Vykuntapu Dedeepya",
+    "email": "vykuntapudedeepya@gmail.com",
+    "password": "$2a$10$oAofBCp7m.xt4mTzSVROAu6171t7LB2QSqdA2.vOEnKjYd2WODNVW",
+    "role": "student",
+    "createdAt": "2026-08-16T09:59:01.274Z"
+  }
+]
