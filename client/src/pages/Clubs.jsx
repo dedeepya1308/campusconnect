@@ -1,0 +1,5 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import api from '../services/api';
+import Loader from '../components/Loader';
+export default function Clubs() { const [clubs, setClubs] = useState(); useEffect(() => { api.get('/clubs').then((response) => setClubs(response.data)); }, []); if (!clubs) return <Loader/>; return <><h1 className="text-3xl font-bold">Campus clubs</h1><p className="mt-2 text-slate-500">Find communities to follow and see what they are building.</p><div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">{clubs.map((club) => <article className="rounded-xl bg-white p-5 shadow" key={club.id}><h2 className="text-xl font-bold">{club.name}</h2><p className="mt-2 min-h-12 text-sm text-slate-600">{club.description || 'A campus community.'}</p><p className="mt-4 text-sm text-slate-500">{club.memberCount} followers · {club.upcomingEvents.length} upcoming events</p><Link className="mt-4 inline-block font-medium text-indigo-700" to={`/clubs/${club.id}`}>View club →</Link></article>)}</div></> }

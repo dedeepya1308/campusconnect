@@ -1,3 +1,4 @@
 @tailwind base; @tailwind components; @tailwind utilities;
-@layer base { body { @apply bg-slate-50 text-slate-900; } }
+@layer base { body { @apply bg-slate-50 text-slate-900; } .dark body { @apply bg-slate-950 text-slate-100; } }
 @layer components { .input { @apply w-full rounded border border-slate-300 px-3 py-2 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100; } .btn { @apply rounded bg-indigo-700 px-4 py-2 font-medium text-white hover:bg-indigo-800; } .btn-secondary { @apply rounded border border-indigo-700 px-4 py-2 font-medium text-indigo-700 hover:bg-indigo-50; } }
+@layer utilities { .dark .bg-white { @apply bg-slate-900; } .dark .bg-slate-50 { @apply bg-slate-950; } .dark .bg-slate-100 { @apply bg-slate-800; } .dark .text-slate-900 { @apply text-slate-100; } .dark .text-slate-600, .dark .text-slate-500 { @apply text-slate-300; } .dark .border-slate-200, .dark .border-slate-300 { @apply border-slate-700; } .dark .input { @apply border-slate-600 bg-slate-800 text-slate-100; } .dark .btn-secondary { @apply border-indigo-400 text-indigo-300 hover:bg-slate-800; } }
