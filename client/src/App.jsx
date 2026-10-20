@@ -27,7 +27,7 @@ const guarded = (page, roles) =>
 
 export default function App() {
   return (
-    <BrowserRouter basename="/campusconnect">
+    <BrowserRouter basename="/campusconnect" future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthProvider>
         <Navbar />
 

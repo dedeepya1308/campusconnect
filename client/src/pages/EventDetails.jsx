@@ -205,7 +205,7 @@ export default function EventDetails() {
             {/* CALENDAR */}
             <a
               className="btn-secondary"
-              href={`${serverUrl()}/events/${id}/calendar`}
+              href={`${serverUrl()}/api/events/${id}/calendar`}
               target="_blank"
               rel="noopener noreferrer"
             >
