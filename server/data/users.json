@@ -30,5 +30,20 @@
     "password": "$2a$10$oAofBCp7m.xt4mTzSVROAu6171t7LB2QSqdA2.vOEnKjYd2WODNVW",
     "role": "student",
     "createdAt": "2026-08-16T09:59:01.274Z"
+  },
+  {
+    "id": "usr_bbd7fcdad563",
+    "name": "dedee",
+    "email": "d36175838@gmail.com",
+    "password": "$2a$10$FrH0vCJRynsFoL6tP/Gzg.MW1qTadAw42G68qBqzDLfKlk.NamaD6",
+    "role": "organizer",
+    "bio": "",
+    "department": "",
+    "course": "",
+    "graduationYear": "",
+    "interests": [],
+    "phone": "",
+    "linkedin": "",
+    "createdAt": "2026-10-20T13:17:56.121Z"
   }
 ]

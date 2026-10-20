@@ -12,5 +12,19 @@
     "description": "",
     "ownerId": "",
     "createdAt": "2026-08-16T10:27:49.127Z"
+  },
+  {
+    "id": "club_46be34b8f680",
+    "name": "Saaz",
+    "description": "",
+    "ownerId": "",
+    "createdAt": "2026-10-20T13:21:44.335Z"
+  },
+  {
+    "id": "club_3cd806bf1c0c",
+    "name": "Jazbaat",
+    "description": "",
+    "ownerId": "",
+    "createdAt": "2026-10-20T13:21:51.590Z"
   }
 ]

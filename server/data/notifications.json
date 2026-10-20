@@ -19,5 +19,19 @@
     "message": "Your event “Independence Day” has been approved and published.",
     "read": false,
     "createdAt": "2026-08-16T10:27:28.082Z"
+  },
+  {
+    "id": "note_bca793f71950",
+    "userId": "usr_admin",
+    "message": "dedee submitted “24 hr hackathon” for approval.",
+    "read": false,
+    "createdAt": "2026-10-20T13:18:52.715Z"
+  },
+  {
+    "id": "note_647fc6f1261a",
+    "userId": "usr_bbd7fcdad563",
+    "message": "Your event “24 hr hackathon” has been approved and published.",
+    "read": false,
+    "createdAt": "2026-10-20T13:21:34.600Z"
   }
 ]

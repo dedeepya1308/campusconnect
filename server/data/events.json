@@ -30,5 +30,23 @@
     "createdAt": "2026-08-16T10:25:47.955Z",
     "rejectionReason": "",
     "reviewedAt": "2026-08-16T10:27:28.077Z"
+  },
+  {
+    "id": "evt_36747855c23a",
+    "title": "24 hr hackathon",
+    "description": "24 hr hackathon is an engaging Technology event for the campus community. Join us on 2026-10-22 at 09:00 in l-103. Connect with fellow students, learn something new, and be part of the experience.",
+    "date": "2026-10-22",
+    "time": "09:00",
+    "location": "l-103",
+    "category": "Technology",
+    "capacity": 200,
+    "clubId": "",
+    "organizerId": "usr_bbd7fcdad563",
+    "image": "",
+    "status": "published",
+    "approvalStatus": "approved",
+    "createdAt": "2026-10-20T13:18:52.707Z",
+    "rejectionReason": "",
+    "reviewedAt": "2026-10-20T13:21:34.592Z"
   }
 ]

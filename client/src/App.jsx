@@ -19,6 +19,7 @@ import Notifications from './pages/Notifications';
 import Clubs from './pages/Clubs';
 import ClubDetails from './pages/ClubDetails';
 import FeedbackAnalytics from './pages/FeedbackAnalytics';
+import CampusAssistant from './pages/CampusAssistant';
 
 const guarded = (page, roles) =>
   <ProtectedRoute>
@@ -43,6 +44,7 @@ export default function App() {
 
             <Route path="/clubs" element={<Clubs />} />
             <Route path="/clubs/:id" element={<ClubDetails />} />
+            <Route path="/assistant" element={guarded(<CampusAssistant />)} />
 
             <Route
               path="/student"
