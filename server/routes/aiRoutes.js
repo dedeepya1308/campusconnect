@@ -13,6 +13,25 @@ const aiRequest = async (instructions, input) => {
   const result = await response.json();
   return result.output_text?.trim();
 };
+const localAssistantAnswer = (question, upcomingEvents, clubs, user) => {
+  const query = question.toLowerCase();
+  if (/club|follow|community|societ/.test(query)) {
+    if (!clubs.length) return 'There are no clubs listed yet. An administrator can add clubs from the Admin dashboard.';
+    const clubList = clubs.slice(0, 5).map((club) => `${club.name}${club.description ? ` — ${club.description}` : ''}`).join('\n• ');
+    return `You can explore and follow these clubs:\n• ${clubList}\n\nOpen the Clubs page, choose a club, and select “Follow club” to receive its announcements.`;
+  }
+  if (/recommend|interest|suggest|suit|like/.test(query)) {
+    if (!upcomingEvents.length) return `I do not see any approved upcoming events yet. Once organizers publish events, I’ll recommend ones that match your interests${user.interests?.length ? `: ${user.interests.join(', ')}` : ''}.`;
+    const interests = keywords((user.interests || []).join(' '));
+    const ranked = [...upcomingEvents].sort((left, right) => interests.filter((item) => `${right.title} ${right.category}`.toLowerCase().includes(item)).length - interests.filter((item) => `${left.title} ${left.category}`.toLowerCase().includes(item)).length).slice(0, 3);
+    return `Based on your profile, you may enjoy:\n• ${ranked.map((event) => `${event.title} — ${event.date}, ${event.location}`).join('\n• ')}\n\nYou can see more tailored suggestions in your Dashboard.`;
+  }
+  if (/event|happen|upcoming|week|today|tomorrow|workshop|competition/.test(query)) {
+    if (!upcomingEvents.length) return 'There are no approved upcoming events yet. Check back after organizers publish events.';
+    return `Here are upcoming events:\n• ${upcomingEvents.slice(0, 4).map((event) => `${event.title} — ${event.date}${event.time ? ` at ${event.time}` : ''}, ${event.location}`).join('\n• ')}\n\nOpen Events to view details or register.`;
+  }
+  return `I can help you discover ${upcomingEvents.length} upcoming event${upcomingEvents.length === 1 ? '' : 's'} and ${clubs.length} campus club${clubs.length === 1 ? '' : 's'}. Try asking “Which clubs can I follow?” or “Recommend an event for my interests.”`;
+};
 
 router.get('/recommendations', authenticate, allowRoles('student'), async (req, res) => {
   const [events, follows] = await Promise.all([readData('events.json'), readData('follows.json')]);
@@ -48,7 +67,7 @@ router.post('/chat', authenticate, async (req, res) => {
   const [events, clubs, follows] = await Promise.all([readData('events.json'), readData('clubs.json'), readData('follows.json')]);
   const upcoming = events.filter((event) => isPublic(event) && event.date >= new Date().toISOString().slice(0, 10)).slice(0, 12).map(({ title, date, time, location, category, clubId }) => ({ title, date, time, location, category, clubId }));
   const clubContext = clubs.map(({ id, name, description }) => ({ id, name, description })); const followed = follows.filter((follow) => follow.userId === req.user.id).map((follow) => follow.clubId);
-  const fallback = upcoming.length ? `Here are upcoming events you can explore: ${upcoming.slice(0, 3).map((event) => `${event.title} on ${event.date} at ${event.location}`).join('; ')}. You can browse Events or Clubs for more details.` : 'There are no approved upcoming events yet. Check back after organizers publish events.';
+  const fallback = localAssistantAnswer(question, upcoming, clubContext, req.user);
   try { const answer = await aiRequest('You are CampusConnect Assistant. Answer only about the supplied campus events, clubs, and the signed-in user. Be concise. If information is missing, say so. Do not invent events, policies, or registration status.', JSON.stringify({ question, user: { role: req.user.role, interests: req.user.interests || [], followedClubIds: followed }, upcomingEvents: upcoming, clubs: clubContext })); res.json({ answer: answer || fallback, source: answer ? 'ai' : 'local' }); } catch { res.json({ answer: fallback, source: 'local' }); }
 });
 export default router;
